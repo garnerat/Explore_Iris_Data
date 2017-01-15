@@ -3,22 +3,22 @@ title: "Vizualize Iris Data"
 output: html_notebook
 ---
 
+Histogram of sepal length.
+
 ```{r}
 hist(iris.data[,1], main = "Histogram of Sepal Length", xlab = "Sepal Length")
 
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
-
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+Density plot of sepal length.
 
 ```{r}
 plot(density(iris.data[,1]), main = "Density Plot of Sepal Length", xlab = "Sepal Length")
 ```
+
+Scatterplot of sepal length and width.
+
 ```{r}
 plot(x =iris.data[,1],y =iris.data[,2], xlab = "Sepal Length", ylab = "Sepal Width")
-```
-```{r}
-str(iris.data)
 ```
 
