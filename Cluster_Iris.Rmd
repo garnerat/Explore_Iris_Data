@@ -1,0 +1,50 @@
+---
+title: "Clustering Iris Data"
+output: html_notebook
+---
+
+Create 3 clusters in iris data using kmeans.
+
+```{r}
+iris.clusters <- kmeans(iris.data[,1:4],3)
+```
+
+```{r, include=FALSE}
+install.packages("fpc")
+```
+
+```{r, include=FALSE}
+library(fpc)
+```
+
+Plot clusters.
+
+```{r}
+plotcluster(iris.data[,1:4], iris.clusters$cluster)
+
+```
+Setosa and versicolor species were well-defined with kmeans. Virginica had the lowest correct classifications at 72.5%. Kmeans is being used for exploration, but it is still interesting to compare the performance of kmeans and heirarchical clustering.
+
+```{r}
+table(iris.data[,5],iris.clusters$cluster)
+```
+
+```{r}
+hc.iris = hclust(dist(iris.data[,1:4]))
+plot(hc.iris)
+rect.hclust(hc.iris, k=3)
+
+```
+
+
+
+
+
+```{r, include=FALSE}
+pruned.hc.iris <- cutree(hc.iris, k=3)
+```
+Hierarchical clustering showed a slight improvement on versicolor and a sligth decrease in accuracy for virginica.
+```{r}
+table(iris.data[,5],pruned.hc.iris)
+```
+
