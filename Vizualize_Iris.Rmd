@@ -21,4 +21,13 @@ Scatterplot of sepal length and width.
 ```{r}
 plot(x =iris.data[,1],y =iris.data[,2], xlab = "Sepal Length", ylab = "Sepal Width")
 ```
+```{r}
+
+cols <- character(nrow(iris.data))
+cols[] <- "black"
+cols[iris.data$Species == "virginica"] <- "red"
+cols[iris.data$Species == "setosa"] <- "blue"
+cols[iris.data$Species == "versicolor"] <- "green"
+pairs(iris.data[,-5],col=cols)
+```
 
